@@ -28,9 +28,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Write Maven settings.xml
-        run: | 
-          mkdir -p ~/.m2
-          echo "${{ secrets.MAVEN_SETTINGS }}" > ~/.m2/settings.xml
+      run: mkdir -p ~/.m2 && echo "${{ secrets.MAVEN_SETTINGS }}" > ~/.m2/settings.xml
+      
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
