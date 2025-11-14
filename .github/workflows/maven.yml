@@ -56,7 +56,7 @@ jobs:
     - name: Dump evaluate outputs
       run: echo "${{ steps.evaluate.outputs }}"
     - name: Push artifacts to Nexus Repository
-      run: mvn deploy:target/deploy-file -DgroupId=com.sonatype \
+      run: mvn deploy:deploy-file -DgroupId=com.sonatype \
         -DartifactId=project \
         -Dversion=6.0.1 \
         -Dpackaging=war \
