@@ -55,13 +55,6 @@ jobs:
       run: echo "${{ steps.evaluate.outputs.scan-id }} ${{ steps.evaluate.outputs.report-url }}"
     - name: Dump evaluate outputs
       run: echo "${{ steps.evaluate.outputs }}"
-    - name: Push artifacts to Nexus Repository
-      run: mvn deploy:deploy-file \
-            -DgroupId=com.sonatype \
-            -DartifactId=project \
-            -Dversion=6.0.1 \
-            -Dpackaging=war \
-            -Dfile=target/WebGoat-6.0.1.war \
-            -DrepositoryId=nexus \
-            -Durl=https://repo.bwhyte.ngrok.io/repository/maven-public
+    - name: Deploy WAR to Nexus
+      run: mvn deploy:deploy-file -DgroupId=com.sonatype -DartifactId=project -Dversion=6.0.1 -Dpackaging=war -Dfile=target/WebGoat-6.0.1.war -DrepositoryId=nexus -Durl=https://repo.bwhyte.ngrok.io/repository/maven-public
         
